@@ -19,6 +19,10 @@ final class OptionsResolver
         }
     }
 
+    /**
+     * @param array $options
+     * @return array
+     */
     public function resolve(array $options): array
     {
         $this->checkDiff($options);

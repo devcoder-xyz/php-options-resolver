@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DevCoder\Resolver;
 
 final class Option
