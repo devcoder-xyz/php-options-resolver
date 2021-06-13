@@ -1,4 +1,5 @@
 # This library processes and validates option array.
+[![Latest Stable Version](http://poser.pugx.org/devcoder-xyz/php-options-resolver/v)](https://packagist.org/packages/devcoder-xyz/php-options-resolver) [![Total Downloads](http://poser.pugx.org/devcoder-xyz/php-options-resolver/downloads)](https://packagist.org/packages/devcoder-xyz/php-options-resolver) [![Latest Unstable Version](http://poser.pugx.org/devcoder-xyz/php-options-resolver/v/unstable)](https://packagist.org/packages/devcoder-xyz/php-options-resolver) [![License](http://poser.pugx.org/devcoder-xyz/php-options-resolver/license)](https://packagist.org/packages/devcoder-xyz/php-options-resolver)
 ## Installation
 
 Use [Composer](https://getcomposer.org/)
