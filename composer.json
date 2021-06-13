@@ -1,0 +1,26 @@
+{
+    "name": "devcoder-xyz/php-options-resolver",
+    "description": "Processes and validates option array",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": " F. Michel.R",
+            "email": "dev@devcoder.xyz",
+            "homepage": "https://www.devcoder.xyz"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "DevCoder\\Resolver\\": "src",
+            "Test\\DevCoder\\Resolver\\": "tests"
+
+        }
+    },
+    "require": {
+        "php": ">=7.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.4"
+    }
+}
