@@ -1,4 +1,12 @@
 # This library processes and validates option array.
+## Installation
+
+Use [Composer](https://getcomposer.org/)
+
+### Composer Require
+```
+composer require devcoder-xyz/php-options-resolver
+```
 ## Requirements
 
 * PHP version 7.3
