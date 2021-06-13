@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DevCoder\Resolver;
 
 final class OptionsResolver
@@ -17,12 +19,6 @@ final class OptionsResolver
         }
     }
 
-    private function add(Option $option): self
-    {
-        $this->options->offsetSet($option->getName(), $option);
-        return $this;
-    }
-
     public function resolve(array $options): array
     {
         $this->checkDiff($options);
@@ -33,10 +29,10 @@ final class OptionsResolver
         $optionsResolved = [];
         foreach ($this->options as $option) {
             $optionName = $option->getName();
-            if (array_key_exists($optionName, $options)) {
+            if (\array_key_exists($optionName, $options)) {
                 $value = $options[$optionName];
                 if ($option->isValid($value) === false) {
-                    throw new \InvalidArgumentException(sprintf('The option "%s" with value %s is invalid.', $optionName, self::formatValue($value)));
+                    throw new \InvalidArgumentException(\sprintf('The option "%s" with value %s is invalid.', $optionName, self::formatValue($value)));
                 }
                 $optionsResolved[$optionName] = $value;
                 continue;
@@ -47,22 +43,28 @@ final class OptionsResolver
                 continue;
             }
 
-            throw new \InvalidArgumentException(sprintf(
+            throw new \InvalidArgumentException(\sprintf(
                 'The required option "%s" is missing.', $optionName)
             );
         }
         return $optionsResolved;
     }
 
-    private function checkDiff(array $options) : void
+    private function add(Option $option): self
+    {
+        $this->options->offsetSet($option->getName(), $option);
+        return $this;
+    }
+
+    private function checkDiff(array $options): void
     {
         $defined = $this->options->getArrayCopy();
         $diff = \array_diff_key($options, $defined);
         if (\count($diff) > 0) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new \InvalidArgumentException(\sprintf(
                     'The option(s) "%s" do(es) not exist. Defined options are: "%s".',
-                    implode(', ', array_keys($diff)),
-                    implode('", "', array_keys($defined)))
+                    \implode(', ', \array_keys($diff)),
+                    \implode('", "', \array_keys($defined)))
             );
         }
     }
@@ -85,6 +87,6 @@ final class OptionsResolver
             return 'true';
         }
 
-        return gettype($value);
+        return \gettype($value);
     }
 }
