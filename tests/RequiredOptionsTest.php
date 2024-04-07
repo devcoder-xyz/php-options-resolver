@@ -11,8 +11,8 @@ class RequiredOptionsTest extends TestCase
     public function test(): void
     {
         $resolver = new OptionsResolver([
-            new Option('action'),
-            new Option('method'),
+            Option::new( 'action' ),
+            Option::new( 'method' )
         ]);
 
         $this->expectException(\InvalidArgumentException::class);

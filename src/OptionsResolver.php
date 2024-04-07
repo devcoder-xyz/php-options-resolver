@@ -6,10 +6,7 @@ namespace DevCoder\Resolver;
 
 final class OptionsResolver
 {
-    /**
-     * @var \ArrayObject<Option>
-     */
-    private $options;
+    private \ArrayObject $options;
 
     public function __construct(array $options)
     {
@@ -54,10 +51,9 @@ final class OptionsResolver
         return $optionsResolved;
     }
 
-    private function add(Option $option): self
+    private function add(Option $option): void
     {
         $this->options->offsetSet($option->getName(), $option);
-        return $this;
     }
 
     private function checkDiff(array $options): void

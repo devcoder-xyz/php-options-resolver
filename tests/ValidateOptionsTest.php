@@ -11,13 +11,10 @@ class ValidateOptionsTest extends TestCase
     public function testNotValid(): void
     {
         $resolver = new OptionsResolver([
-            (new Option('action'))
-                ->validator(static function ($value) {
-                    return filter_var($value, FILTER_VALIDATE_URL) !== false;
-                })
-            ,
-            (new Option('method'))
-                ->setDefaultValue('POST'),
+            Option::new('action')->validator(static function ($value) {
+                return filter_var($value, FILTER_VALIDATE_URL) !== false;
+            }),
+            Option::new('method')->setDefaultValue('POST'),
         ]);
 
         $this->expectException(\InvalidArgumentException::class);
@@ -29,13 +26,10 @@ class ValidateOptionsTest extends TestCase
     public function testValid(): void
     {
         $resolver = new OptionsResolver([
-            (new Option('action'))
-                ->validator(static function ($value) {
-                    return filter_var($value, FILTER_VALIDATE_URL) !== false;
-                })
-            ,
-            (new Option('method'))
-                ->setDefaultValue('POST'),
+            Option::new('action')->validator(static function ($value) {
+                return filter_var($value, FILTER_VALIDATE_URL) !== false;
+            }),
+            Option::new('method')->setDefaultValue('POST'),
         ]);
 
         $options = $resolver->resolve([

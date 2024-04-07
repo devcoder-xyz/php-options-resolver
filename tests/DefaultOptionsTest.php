@@ -11,11 +11,9 @@ class DefaultOptionsTest extends TestCase
     public function test(): void
     {
         $resolver = new OptionsResolver([
-            new Option('action'),
-            (new Option('method'))
-                ->setDefaultValue('POST'),
-            (new Option('id'))
-                ->setDefaultValue('form-01')
+            Option::new('action'),
+            Option::new('method')->setDefaultValue('POST'),
+            Option::new('id')->setDefaultValue('form-01'),
         ]);
 
         $options = $resolver->resolve([

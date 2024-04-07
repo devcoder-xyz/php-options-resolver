@@ -9,7 +9,7 @@ final class Option
     /**
      * @var string
      */
-    private $name;
+    private string $name;
 
     /**
      * @var mixed
@@ -19,12 +19,12 @@ final class Option
     /**
      * @var bool
      */
-    private $hasDefaultValue = false;
+    private bool $hasDefaultValue = false;
 
     /**
      * @var \Closure|null
      */
-    private $validator;
+    private ?\Closure $validator = null;
 
     /**
      * Option constructor.
@@ -49,27 +49,47 @@ final class Option
     }
 
     /**
-     * @param mixed $defaultValue
+     * Set the default value of the option.
+     *
+     * @param mixed $value The default value to set.
      * @return Option
      */
-    public function setDefaultValue($defaultValue): self
+    public function setDefaultValue($value): self
     {
         $this->hasDefaultValue = true;
-        $this->defaultValue = $defaultValue;
+        $this->defaultValue = $value;
         return $this;
     }
 
+
+    /**
+     * Check if the option has a default value.
+     *
+     * @return bool True if the option has a default value, false otherwise.
+     */
     public function hasDefaultValue(): bool
     {
         return $this->hasDefaultValue;
     }
 
+    /**
+     * Set a validator function for the option.
+     *
+     * @param \Closure $closure The closure to use as a validator.
+     * @return Option
+     */
     public function validator(\Closure $closure): self
     {
         $this->validator = $closure;
         return $this;
     }
 
+    /**
+     * Check if a value is valid based on the validator function.
+     *
+     * @param mixed $value The value to validate.
+     * @return bool True if the value is valid, false otherwise.
+     */
     public function isValid($value): bool
     {
         if ($this->validator instanceof \Closure) {
@@ -77,5 +97,10 @@ final class Option
             return $validator($value);
         }
         return true;
+    }
+
+    public static function new(string $name) : self
+    {
+        return new self($name);
     }
 }
